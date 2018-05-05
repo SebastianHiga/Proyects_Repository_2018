@@ -1,0 +1,150 @@
+INTRODUCCION
+
+Hoy en dia, es muy normal encontrar situaciones como la siguiente (imagen de alguien 
+tomandose la presion) o como esta (imagen de alguien tomandose la glucosa en sangre); 
+como esta (alguien tomandose la temperatura) o incluso, si han estado en contacto con 
+el deporte de alto rendimiento (o incluso no tan alto rendimiento), imagenes como esta 
+(imagen de deportista pesandose y midiendose haciendo un ecocardiograma).
+
+La razon de la normalidad de estas situaciones es que los sensores necesarios para 
+hacer este tipo de analisis han reducido enormemente su tamano, los insumos 
+necesarios se han reducido enormemente y los metodos se han simplificado. No hace 
+tantos anos para tomarse la presion uno debia concurrir a algun centro de salud (o 
+farmacia) para que un trabajdaor de la salud, entrenado, pudiera hacer la medicion 
+pertinete.  Para hacer un (ahora) simple analis de glucosa en sangre debia  concurrirse 
+a un laboratorio y espera a que le tomaran hasta dos muestras de sangre.
+
+La salud de muchisima gente hoy en dia depende de que este tipo de mediciones se hagan 
+de manera periodica, para llevar un registro detallado de sus constantes vitales. Las 
+enfermedades cronicas (que son aquellas que se desarrollan lentamente o que persisten a 
+lo largo del tiempo) requieren casi siempre que el propio paciente lleve un registro de 
+alguna de sus constantes vitales de manera continuacda a lo largo del tiempo. En este 
+campo la electronica y su disminucion tanto en costo como en tamano ha ayudado 
+enormemente a la medicina.
+
+Pero como en todos los casos siempre hay campo para seguir mejorando.
+
+Supongo que muchos de ustedes estan familiarizados con el termino: "medicina 
+preventiva". Para aquellos que no, se los hago breve: la medicina preventiva es una 
+rama de la medicina que busca, a traves de muchas areas dentro y fuera de la medicina 
+mejorar y controlar la salud de la poblacion. Uno de los pilares fundamentales de la 
+medicina preventiva es la informacion. En especial la informacion de los parametros 
+vitales de cada una de las personas que conforman a la poblacion. 
+
+Uno tenderia a pensar que si los metodos de tomas de estos datos se han tornado tan 
+sencillas la medicina preventiva seria una de las ramas mas desarrolladas en los 
+ultimos tiempos. Sin embargo no es asi. Y una de las razones principales de esto es que 
+muchos de los intrumentos no poseen la facilidad de almacenar mediciones y/o exportar 
+los datos, y si la tienen, generalmente  no estan actualizados a los metodos modernos. 
+Los mismos pacientes deben recurrir al fiel papel y lapiz o (mas moderno) llevar nota 
+en algun medio digital. Y esto lleva demasiado tiempo en un mundo tan inmediato como 
+hoy en dia.
+
+Es por esta razon que se nos ocurrio idear como proyecto un sistema simple, rapido y 
+centralizado de toma de constantes vitales que se adapte a los mecanismos y tiempos 
+actuales, que sea lo mas amigable con usuario posible.
+
+ANALISIS DE MERCADO
+
+Obviamente no estamos intentando re-inventar la rueda. Esta problematica ya ha sido 
+analizada por varias personas y han llegado al mercado. Pero a nuestro entender los 
+esfuerzos se han puesto en productos muy distintos y no se han ocupado de centralizar 
+todo en un solo dispositivo. 
+
+Tenemos como el ejemplo mas completo de los que queremos desarrollar (y una gran 
+inspiracion para este proyecto) la plataforma iHeath de Apple. iHealth tiene la ventaja 
+de de adapatarse directamente a los dispositivos moviles de Apple, una 
+plataforma muy conocida y familiar para muchisimos usuarios. La aplicacion movil 
+permite almacenar datos de manera sencilla, comoda y conocida, ademas de permitir subir 
+todo a la nube. La plataforma se complementa con un numero limitado de dispositivos 
+distribuidos tambien por Apple: medidores de glucosa, tensiometros, oximetros y 
+balanzas. Lo que le vemos de malo a esto es una de las caracteristicas principales de 
+los productos apple: su compatibilidad con otros instrumentos es limitada o incluso 
+inexistente, su variedad es limitada, es unicamente compatible con dispositivos moviles 
+de Apple, la disponibilidad de los insumos necesarios esta limitada al area geografica 
+y su costo es alto.
+
+Por otro lado tenemos la otra de las grandes inspiraciones para este proyecto: la 
+plataforma MySignals de Libellium. La plataforma se basa en una placa disenada para la 
+compatibilidad con Raspberry Pi y Arduino, que permite una gran cantidad de sensores 
+externos, ademas de permitir una sincronizacion con una aplicion movil y una paltaforma 
+web. Lo unico problematico de este sistema es que se dearrollo con la mentalidad de HW 
+abierto. Es muy suceptible a permitir cambios de hardware y requiere un cierto nivel de 
+conocimiento por parte del usuario para cambiar los sensores. 
+
+Como parte final de nuestro estudio de mercado analizamos las opciones disponibles en 
+el mercado de aplicaiones moviles. Si bien estas opciones no poseen la parte de HW que 
+deseamos implementar nosotros, hay una muy variada seleccion de sistemas de registro de 
+constantes vitales. Las ventajas que tienen en general es su portabilidad, sencilles 
+y multiplicidad de registros. Ademas son, en su mayoria, gratuitas y estan disponibles 
+para casi cualquier persona actualmente. 
+
+En nuestro proyecto pretendemos desarrollar algo que tenga la sencillez y familiaridad 
+de operacion que ofrece iHealth, la 'maleabilidad' de HW que ofrece MySignals, y la 
+portabilidad que ofrecen las aplicaiones moviles. 
+
+PERIFERICOS, SENSORES Y ACTUADORES A UTILIZAR
+
+Para poder hacer una analis mas detallado vamos a separ el trabajo en sus 
+diferentes partes.
+
+Balanza:
+Para la balanza usaremos una celda de carga montada en una placa. La senal que 
+esta envie debera ser acondicionada para luego ser procesada correctamente. A la 
+señal acondicinada se la leera a traves deuno de los canales del ADC del 
+microprocesador para luego hacer en analisis correspondiente de datos.
+
+Termometro:
+Para el termometro usaremos una termocupla, la mas adecuada disponible en el 
+mercado para el rango dde temperaturas que queremos analisar. 
+La señal de la termocupla tambien debera ser amplificada y acondicionada para 
+luego ser recibida por  otro canal del ADC, distinto al usado por la balanza
+
+Medidor de Tension Arterial: 
+Para el medidor de tension arterial no se tendra ningun periferico directamente 
+conectado al microprocesador. La comunicacion con este aparato sera remota. Pero 
+como breve explicaion de lo utilizado en el, podemos decir que consta de un 
+sensor de presion absoluta, un amplificador de instrumentacion y un ADC de gran 
+calidad para tomar las muestras pertinentes. 
+
+Interfaz con el usuario:
+Para la interaccion del usuario con el instrumento se utilizara un TFT color, de 
+tamano suficiente para una visualizar los datos de las senales y permitir una 
+correcta manipulacion sin mayores problemas. 
+Como extras el sistema tendra una memoria interna (ajena a la memoria del 
+microprocesador), una entrada para tarjeta SD, posibilidad de conexion USB con 
+una PC (puerto USB tipo B) y un dispositivo acorde a la comunicacion inalambrica 
+que se desea hacer con el tensionmetro. 
+
+Como algo general a todo el sistema se tendra un switch de reset y uno de 
+power-on accesibles por el usuario. Se pretende que el sistema sea alimentado por 
+el suministro electrico domiciliario. 
+
+
+ETAPAS DE ACONDICIONAMIENTO DE SENAL
+
+Para explicar las diferentes etapas de acondicionamiento de senal haremos lo 
+mismo que hicimos para el punto anterior, separaremos cada caso.
+
+Balanza:
+La senal que nos de la celda de carga debe ser amplificada y luego filtrada para 
+eliminar el ruido
+
+Termometro:
+Tambien debe tener una señal de amplificacion y una etapa de filtrado para 
+eliminar ruido. 
+
+Tensiometro:
+Para el tensiometro, debido a la precision que se debe tener, hay que implementar 
+una etapa de amplificion de muy bajo ruido y un filtrado de alta frecuencia para 
+eliminar todo el posible ruido de la senal.
+
+TIPOS DE COMUNICACION
+
+Para este proyecto se usaran tres tipos de comunicacion: 
+
+-> Comunicacion serie (wireless y via USB)
+-> Comunicacion I2C (Para la memoria)
+-> Comunicacion SPI (Para la memoria extraible SD)
+
+  
