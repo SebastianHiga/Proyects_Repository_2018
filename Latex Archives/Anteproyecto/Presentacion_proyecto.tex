@@ -1,0 +1,183 @@
+\documentclass[11pt]{report} 
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{lettrine}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{geometry}
+\usepackage{afterpage}
+\usepackage{steinmetz}
+\usepackage{multicol}
+\usepackage{lipsum}
+
+\begin{document}
+	\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for horizontal lines, change thickness here
+		
+		\center % Centre everything on the page
+		
+		%------------------------------------------------
+		%	Headings
+		%------------------------------------------------
+		
+		\textsc{\LARGE Universidad Tecnológica Nacional }\\[1.5cm] % Main heading such as the name of your university/college
+		
+		\textsc{\Large Facultad Regional Buenos Aires}\\[0.5cm] % Major heading such as course name
+		
+		\textsc{\large Técnicas Digitales II - Curso R4001}\\[0.5cm] % Minor heading such as course title
+		
+		%------------------------------------------------
+		%	Title
+		%------------------------------------------------
+		
+		\HRule\\[0.4cm]
+		
+		{\huge\bfseries Presentación del Proyecto \\ \hfill \\ \LARGE  Monitor de señales vitales basado en el LPC1769 }\\[0.8cm] 
+		
+		\HRule\\[1.5cm]
+		
+		%------------------------------------------------
+		%	Author(s)
+		%------------------------------------------------
+		
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft}
+				\large
+				\textit{Autores}\\
+				Guillermo Ariel 	\textsc{Muena} \\ % Your name
+				Christian 			   \textsc{Banda Borja} \\
+				Sebastian Ariel 	\textsc{Higa} \\ 
+			\end{flushleft}
+		\end{minipage}
+		~
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright}
+				\large
+				\textit{Profesor}\\
+				Ing. Marcelo \textsc{Romeo} \\ 
+				\textit{Ayudante}\\
+				Ing. Juan Ignacio \textsc{Bacigalupo} \\
+			\end{flushright}
+		\end{minipage}
+		
+		% If you don't want a supervisor, uncomment the two lines below and comment the code above
+		%{\large\textit{Author}}\\
+		%John \textsc{Smith} % Your name
+		
+		%------------------------------------------------
+		%	Date
+		%------------------------------------------------
+		%------------------------------------------------
+		%	Logo
+		%------------------------------------------------
+		\hfill
+		\\[5cm]
+		\hfill
+		\vfill\vfill
+		\includegraphics[width=0.2\textwidth]{Logo_UTN-FRBA.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+		
+		%----------------------------------------------------------------------------------------
+		
+		\vfill % Push the date up 1/4 of the remaining page
+		
+	\end{titlepage}
+
+
+\newpage
+\noindent \Large \textbf{INTRODUCCION} \\
+\\
+Hoy en día es bastante común tener en casa muchos instrumentos médicos sencillos, y muchos de ellos puede que incluso sean  utilizados de manera regular por alguien en la casa. Incluso, para aquellos que estén familiarizados con el deporte de alto rendimiento puede que estén también familiarizados con instrumentos incluso más complicados, pero aún así bastante portables, como puede ser una maquina de electrocardiogramas, que, si bien son solo utilizables por profesionales, son bastante comunes. \\
+
+La razón de la normalidad de estas situaciones es que los sensores necesarios para hacer este tipo de análisis han reducido enormemente su tamaño, los insumos necesarios se han reducido enormemente y los métodos se han simplificado. No hace tantos años para tomarse la presión uno debía concurrir a algún centro de salud (o
+farmacia) para que un trabajador de la salud, entrenado, pudiera hacer la medición pertinente.  Para hacer un ahora simple análisis de glucosa en sangre debía  concurrirse a un laboratorio y esperar a que le tomaran hasta dos muestras de sangre.\\
+
+La salud de muchísima gente hoy en día depende de que este tipo de mediciones se hagan de manera periódica, para llevar un registro detallado de sus constantes vitales. Las enfermedades crónicas (que son aquellas que se desarrollan lentamente o que persisten a lo largo del tiempo) requieren casi siempre que el propio paciente lleve un registro de
+alguna de sus constantes vitales de manera continuada a lo largo del tiempo. En este campo la electrónica y su disminución tanto en costo como en tamaño ha ayudado enormemente a la medicina.\\
+
+Pero como en todos los casos siempre hay campo para seguir mejorando.\\
+
+Supongo que muchos de ustedes están familiarizados con el termino: "medicina preventiva". Para aquellos que no, se los hago breve: la medicina preventiva es una rama de la medicina que busca, a través de muchas áreas dentro y fuera de la medicina mejorar y controlar la salud de la población. Uno de los pilares fundamentales de la medicina preventiva es la información. En especial la información de los parámetros vitales de cada una de las personas que conforman a la población.\\
+
+Uno tendería a pensar que si los métodos de tomas de estos datos se han tornado tan sencillas la medicina preventiva seria una de las ramas mas desarrolladas en los últimos tiempos. Sin embargo no es así. Y una de las razones principales de esto es que muchos de los instrumentos no poseen la facilidad de almacenar mediciones y/o exportar
+los datos, y si la tienen, generalmente  no están actualizados a los métodos modernos.
+Los mismos pacientes deben recurrir al fiel papel y lápiz o (mas moderno) llevar nota en algún medio digital. Y esto lleva demasiado tiempo en un mundo tan inmediato como hoy en día\\
+
+Es por esta razón que se nos ocurrió idear como proyecto un sistema simple, rápido y centralizado de toma de constantes vitales que se adapte a los mecanismos y tiempos actuales y que sea lo mas amigable con usuario posible.\\
+
+
+\newpage
+\noindent \Large \textbf{ANÁLISIS DE MERCADO} \\
+\\
+
+Obviamente no estamos intentando re-inventar la rueda. Esta problemática ya ha sido analizada por varias personas y han llegado al mercado. Pero a nuestro entender los esfuerzos se han puesto en productos muy distintos y no se han ocupado de centralizar todo en un solo dispositivo.\\
+
+Tenemos como el ejemplo más completo de los que queremos desarrollar (y una gran inspiración para este proyecto) la plataforma iHealth de Apple. iHealth tiene la ventaja de de adaptarse directamente a los dispositivos móviles de Apple, una plataforma muy conocida y familiar para muchísimos usuarios. La aplicación móvil permite almacenar datos de manera sencilla, cómoda y conocida, ademas de permitir subir todo a la nube. La plataforma se complementa con un numero limitado de dispositivos distribuidos también por Apple: medidores de glucosa, tensiómetros, oxímetros y
+balanzas. Lo que le vemos de malo a esto es una de las características principales de los productos Apple: su compatibilidad con otros instrumentos es limitada o incluso inexistente, su variedad es limitada, es unicamente compatible con dispositivos móviles de Apple, la disponibilidad de los insumos necesarios esta limitada al área geográfica y su costo es alto.\\
+
+Por otro lado tenemos la otra de las grandes inspiraciones para este proyecto: la plataforma MySignals de Libellium. La plataforma se basa en una placa diseñada para la compatibilidad con Raspberry Pi y Arduino, que permite una gran cantidad de sensores externos, ademas de permitir una sincronización con una aplicación móvil y una plataforma
+web. Lo único problemático de este sistema es que se desarrollo con la mentalidad de HW abierto. Es muy susceptible a permitir cambios de Hardware y requiere un cierto nivel de conocimiento por parte del usuario para cambiar los sensores.\\
+
+Como parte final de nuestro estudio de mercado analizamos las opciones disponibles en el mercado de aplicaciones móviles Si bien estas opciones no poseen la parte de HW que deseamos implementar nosotros, hay una muy variada selección de sistemas de registro de constantes vitales. Las ventajas que tienen en general es su portabilidad, sencillez
+y multiplicidad de registros. Ademas son, en su mayoría, gratuitas y están disponibles para casi cualquier persona actualmente.\\
+
+En nuestro proyecto pretendemos desarrollar algo que tenga la sencillez y familiaridad de operación que ofrece iHealth, la 'maleabilidad' de HW que ofrece MySignals, y la portabilidad que ofrecen las aplicaciones móviles\\
+
+\hfill
+\\ \hfill
+
+\noindent \large \textbf{PERIFERICOS, SENSORES Y ACTUADORES A UTILIZAR} \\
+
+Para poder hacer una análisis mas detallado vamos a separar el trabajo en sus diferentes partes.\\
+
+\noindent \underline{Balanza: }\\
+Para la balanza usaremos una celda de carga montada en una placa. La señal que esta envié deberá ser acondicionada para luego ser procesada correctamente. A la señal acondicionada se la leerá a través de uno de los canales del AD del
+microprocesador para luego hacer en análisis correspondiente de datos.\\
+
+\noindent \underline{Termómetro:}\\
+Para el termómetro usaremos una termocupla, la mas adecuada disponible en el mercado para el rango de temperaturas que queremos analizar La se al de la termocupla también deberá ser amplificada y acondicionada para
+luego ser recibida por  otro canal del AD, distinto al usado por la balanza\\
+
+\noindent \underline{Medidor de Tensión Arterial:}\\
+Para el medidor de tensión arterial no se tendrá ningún periférico directamente conectado al microprocesador. La comunicación con este aparato sera remota. Pero como breve explicación de lo utilizado en el, podemos decir que consta de un sensor de presión diferencial, un amplificador de instrumentación y un AD de gran calidad para tomar las muestras pertinentes.\\
+
+\noindent \underline{Interfaz con el usuario:}\\
+Para la interacción del usuario con el instrumento se utilizara un TFT color, de tamaño suficiente para una visualizar los datos de las señales y permitir una correcta manipulación sin mayores problemas. \\
+Como extras el sistema tendrá una memoria interna (ajena a la memoria del microprocesador), una entrada para tarjeta SD, posibilidad de conexión USB con una PC (puerto USB tipo B) y un dispositivo acorde a la comunicación inalámbrica
+que se desea hacer con el tensiómetro.\\
+
+\hfill
+\\ \hfill
+
+ \noindent \large \textbf{ETAPAS DE ACONDICIONAMIENTO DE SEÑAL} \\
+
+Para explicar las diferentes etapas de acondicionamiento de señal haremos lo mismo que hicimos para el punto anterior, separaremos cada caso.\\
+
+\noindent \underline{Balanza:} \\
+La señal que nos dé la celda de carga debe ser amplificada y luego filtrada para
+eliminar el ruido. utilizaremos un amplificador de bajo ruido y un filtro pasa-bajos para acondicionar la señal y eliminar todo posible ruido.\\
+
+\noindent \underline{Termómetro:} \\
+Para el termómetro también hemos de hacer lo mismo, tomar la señal de la termocupla, amplificar el valor de señal con un amplificador de bajo ruido y luego filtrar para evitar ruidos de alta frecuencia. Es posible que para este sensor tomemos una serie de valores a lo largo de un periodo de tiempo y cunado los valores comiencen a parecerse a los anteriores recién en ese momento hacer la medición real (es decir, tomar varios valores seguido y promediar). \\
+
+\noindent \underline{Tensiómetro:} \\
+Para el tensiómetro, debido a la precisión que se debe tener, hay que implementar una etapa de amplificación de muy bajo ruido y un filtrado de alta frecuencia para eliminar todo el posible ruido de la señal. Una vez que eso se logra debe hacerse un análisis detallado de los valores de presión, para determinar los valores que nos interesan.\\
+
+\noindent \large \textbf{ TIPOS DE COMUNICACIÓN}\\
+
+Para este proyecto se usaran tres tipos de comunicación: \\
+
+\begin{itemize}
+	\item Comunicación serie (wireless y vía USB) \\
+	\item Comunicación I2C (Para la memoria) \\
+	\item  Comunicación SPI (Para la memoria extraíble SD) \\
+\end{itemize}
+
+
+
+
+\end{document}
