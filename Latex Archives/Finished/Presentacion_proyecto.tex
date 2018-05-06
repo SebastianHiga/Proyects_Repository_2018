@@ -91,7 +91,7 @@
 \newpage
 \noindent \Large \textbf{INTRODUCCION} \\
 \\
-Hoy en día es bastante común tener en casa muchos instrumentos médicos sencillos, y muchos de ellos puede que incluso sean  utilizados de manera regular por alguien en la casa. Incluso, para aquellos que estén familiarizados con el deporte de alto rendimiento puede que estén también familiarizados con instrumentos incluso más complicados, pero aún así bastante portables, como puede ser una maquina de electrocardiogramas, que, si bien son solo utilizables por profesionales, son bastante comunes. \\
+Hoy en día es bastante común tener en casa muchos instrumentos médicos sencillos, y muchos de ellos puede que incluso sean  utilizados de manera regular por alguien en la casa. Incluso, para aquellos que estén familiarizados con el deporte de alto rendimiento puede que estén también familiarizados con instrumentos incluso más complicados, pero aún así bastante portables, como puede ser una máquina de electrocardiogramas, que, si bien son solo utilizables por profesionales, son bastante comunes. \\
 
 La razón de la normalidad de estas situaciones es que los sensores necesarios para hacer este tipo de análisis han reducido enormemente su tamaño, los insumos necesarios se han reducido enormemente y los métodos se han simplificado. No hace tantos años para tomarse la presión uno debía concurrir a algún centro de salud (o
 farmacia) para que un trabajador de la salud, entrenado, pudiera hacer la medición pertinente.  Para hacer un ahora simple análisis de glucosa en sangre debía  concurrirse a un laboratorio y esperar a que le tomaran hasta dos muestras de sangre.\\
@@ -101,13 +101,13 @@ alguna de sus constantes vitales de manera continuada a lo largo del tiempo. En 
 
 Pero como en todos los casos siempre hay campo para seguir mejorando.\\
 
-Supongo que muchos de ustedes están familiarizados con el termino: "medicina preventiva". Para aquellos que no, se los hago breve: la medicina preventiva es una rama de la medicina que busca, a través de muchas áreas dentro y fuera de la medicina mejorar y controlar la salud de la población. Uno de los pilares fundamentales de la medicina preventiva es la información. En especial la información de los parámetros vitales de cada una de las personas que conforman a la población.\\
+Muchos de ustedes deben estár familiarizados con el término: "medicina preventiva". Para aquellos que no, en pocas palabras: la medicina preventiva es una rama de la medicina que busca, a través de muchas áreas dentro y fuera de la medicina mejorar y controlar la salud de la población. Uno de los pilares fundamentales de la medicina preventiva es la información. En especial la información de los parámetros vitales de cada una de las personas que conforman a la población.\\
 
-Uno tendería a pensar que si los métodos de tomas de estos datos se han tornado tan sencillas la medicina preventiva seria una de las ramas mas desarrolladas en los últimos tiempos. Sin embargo no es así. Y una de las razones principales de esto es que muchos de los instrumentos no poseen la facilidad de almacenar mediciones y/o exportar
+Uno tendería a pensar que si los métodos de tomas de estos datos se han tornado tan sencillas la medicina preventiva sería una de las ramas mas desarrolladas en los últimos tiempos. Sin embargo no es así. Y una de las razones principales de esto es que muchos de los instrumentos no poseen la facilidad de almacenar mediciones y/o exportar
 los datos, y si la tienen, generalmente  no están actualizados a los métodos modernos.
-Los mismos pacientes deben recurrir al fiel papel y lápiz o (mas moderno) llevar nota en algún medio digital. Y esto lleva demasiado tiempo en un mundo tan inmediato como hoy en día\\
+Los mismos pacientes deben recurrir al fiel papel y lápiz o (mas moderno) llevar nota en algún medio digital. Y esto lleva demasiado tiempo en un mundo tan inmediato como hoy en día.\\
 
-Es por esta razón que se nos ocurrió idear como proyecto un sistema simple, rápido y centralizado de toma de constantes vitales que se adapte a los mecanismos y tiempos actuales y que sea lo mas amigable con usuario posible.\\
+Es por esta razón que se nos ocurrió idear como proyecto un sistema simple, rápido y centralizado de toma de constantes vitales que se adapte a los mecanismos y tiempos actuales y que sea lo mas amigable con el usuario posible.\\
 
 
 \newpage
@@ -120,12 +120,12 @@ Tenemos como el ejemplo más completo de los que queremos desarrollar (y una gra
 balanzas. Lo que le vemos de malo a esto es una de las características principales de los productos Apple: su compatibilidad con otros instrumentos es limitada o incluso inexistente, su variedad es limitada, es unicamente compatible con dispositivos móviles de Apple, la disponibilidad de los insumos necesarios esta limitada al área geográfica y su costo es alto.\\
 
 Por otro lado tenemos la otra de las grandes inspiraciones para este proyecto: la plataforma MySignals de Libellium. La plataforma se basa en una placa diseñada para la compatibilidad con Raspberry Pi y Arduino, que permite una gran cantidad de sensores externos, ademas de permitir una sincronización con una aplicación móvil y una plataforma
-web. Lo único problemático de este sistema es que se desarrollo con la mentalidad de HW abierto. Es muy susceptible a permitir cambios de Hardware y requiere un cierto nivel de conocimiento por parte del usuario para cambiar los sensores.\\
+web. Lo único problemático de este sistema es que se desarrolló con la mentalidad de HW abierto. Es muy susceptible a permitir cambios de Hardware y requiere un cierto nivel de conocimiento por parte del usuario para cambiar los sensores.\\
 
-Como parte final de nuestro estudio de mercado analizamos las opciones disponibles en el mercado de aplicaciones móviles Si bien estas opciones no poseen la parte de HW que deseamos implementar nosotros, hay una muy variada selección de sistemas de registro de constantes vitales. Las ventajas que tienen en general es su portabilidad, sencillez
+Como parte final de nuestro estudio de mercado analizamos las opciones disponibles en el mercado de aplicaciones móviles. Si bien estas opciones no poseen la parte de HW que deseamos implementar nosotros, hay una muy variada selección de sistemas de registro de constantes vitales. Las ventajas que tienen en general es su portabilidad, sencillez
 y multiplicidad de registros. Ademas son, en su mayoría, gratuitas y están disponibles para casi cualquier persona actualmente.\\
 
-En nuestro proyecto pretendemos desarrollar algo que tenga la sencillez y familiaridad de operación que ofrece iHealth, la 'maleabilidad' de HW que ofrece MySignals, y la portabilidad que ofrecen las aplicaciones móviles\\
+En nuestro proyecto pretendemos desarrollar algo que tenga la sencillez y familiaridad de operación que ofrece iHealth, la 'maleabilidad' de HW que ofrece MySignals, y la portabilidad que ofrecen las aplicaciones móviles.\\
 
 \hfill
 \\ \hfill
@@ -139,14 +139,14 @@ Para la balanza usaremos una celda de carga montada en una placa. La señal que 
 microprocesador para luego hacer en análisis correspondiente de datos.\\
 
 \noindent \underline{Termómetro:}\\
-Para el termómetro usaremos una termocupla, la mas adecuada disponible en el mercado para el rango de temperaturas que queremos analizar La se al de la termocupla también deberá ser amplificada y acondicionada para
-luego ser recibida por  otro canal del AD, distinto al usado por la balanza\\
+Para el termómetro usaremos una termocupla, la más adecuada disponible en el mercado para el rango de temperaturas que queremos analizar. La señal de la termocupla también deberá ser amplificada y acondicionada para
+luego ser recibida por  otro canal del AD, distinto al usado por la balanza.\\
 
 \noindent \underline{Medidor de Tensión Arterial:}\\
-Para el medidor de tensión arterial no se tendrá ningún periférico directamente conectado al microprocesador. La comunicación con este aparato sera remota. Pero como breve explicación de lo utilizado en el, podemos decir que consta de un sensor de presión diferencial, un amplificador de instrumentación y un AD de gran calidad para tomar las muestras pertinentes.\\
+Para el medidor de tensión arterial no se tendrá ningún periférico directamente conectado al microprocesador. La comunicación con este aparato será remota. Pero como breve explicación de lo utilizado en él, podemos decir que consta de un sensor de presión diferencial, un amplificador de instrumentación y un AD de gran calidad para tomar las muestras pertinentes.\\
 
 \noindent \underline{Interfaz con el usuario:}\\
-Para la interacción del usuario con el instrumento se utilizara un TFT color, de tamaño suficiente para una visualizar los datos de las señales y permitir una correcta manipulación sin mayores problemas. \\
+Para la interacción del usuario con el instrumento se utilizará un TFT color, de tamaño suficiente para visualizar los datos de las señales y permitir una correcta manipulación sin mayores problemas. \\
 Como extras el sistema tendrá una memoria interna (ajena a la memoria del microprocesador), una entrada para tarjeta SD, posibilidad de conexión USB con una PC (puerto USB tipo B) y un dispositivo acorde a la comunicación inalámbrica
 que se desea hacer con el tensiómetro.\\
 
