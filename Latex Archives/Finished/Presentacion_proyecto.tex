@@ -165,14 +165,14 @@ eliminar el ruido. utilizaremos un amplificador de bajo ruido y un filtro pasa-b
 Para el termómetro también hemos de hacer lo mismo, tomar la señal de la termocupla, amplificar el valor de señal con un amplificador de bajo ruido y luego filtrar para evitar ruidos de alta frecuencia. Es posible que para este sensor tomemos una serie de valores a lo largo de un periodo de tiempo y cuando los valores comiencen a parecerse a los anteriores recién en ese momento hacer la medición real (es decir, tomar varios valores seguido y promediar). \\
 
 \noindent \underline{Tensiómetro:} \\
-Para el tensiómetro, debido a la precisión que se debe tener, hay que implementar una etapa de amplificación de muy bajo ruido y un filtrado de alta frecuencia para eliminar todo el posible ruido de la señal. Una vez que eso se logra debe hacerse un análisis detallado de los valores de presión, para determinar los valores que nos interesan.\\
+Para el tensiómetro, debido a la wireless precisión que se debe tener, hay que implementar una etapa de amplificación de muy bajo ruido y un filtrado de alta frecuencia para eliminar todo el posible ruido de la señal. Una vez que eso se logra debe hacerse un análisis detallado de los valores de presión, para determinar los valores que nos interesan.\\
 
 \noindent \large \textbf{ TIPOS DE COMUNICACIÓN}\\
 
 Para este proyecto se usaran tres tipos de comunicación: \\
 
 \begin{itemize}
-	\item Comunicación serie (wireless y vía USB) \\
+	\item Comunicación serie (wireless\footnote{Usaremos para comunicación inalámbrica un módulo bluetooth, para que el consumo de energía sea el mínimo posible } y vía USB) \\
 	\item Comunicación I2C (Para la memoria) \\
 	\item  Comunicación SPI (Para la memoria extraíble SD) \\
 \end{itemize}
